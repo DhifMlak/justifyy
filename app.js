@@ -9,6 +9,10 @@ app.use(function(req, res, next) {
     next();
 });
 
+
+const api = require('./api/routes')
+app.use('/api', api);
+
 app.listen(3000, ()=>{
     console.log('port:3000')
   })
