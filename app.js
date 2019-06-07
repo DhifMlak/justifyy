@@ -1,7 +1,8 @@
 const express = require('express')
-const bodyparser = require('body-parser');
+const bodyParser = require('body-parser');
 const app = express();
-app.use(bodyparser.text());
+
+app.use(bodyParser.text({type:"*/*"}));
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -14,5 +15,5 @@ const api = require('./api/routes')
 app.use('/api', api);
 
 app.listen(3000, ()=>{
-    console.log('port:3000')
+    console.log('Listening on port:3000')
   })

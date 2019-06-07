@@ -1,15 +1,14 @@
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
+const { rateLimiter } = require('./middleware/ratelimter')
+const { tokenValidator } = require('./middleware/tokenValidator')
 
-
-
-
-router.post('/justify', (req, res) => {
+router.post('/justify',tokenValidator,rateLimiter, (req, res) => {
     res.send(justify(req.body, 80))
 })
 
 router.post('/token', (req, res) => {
-    res.send({ token: jwt.sign(req.body.email, ' secret_pass ') })
+    res.send({ token: jwt.sign({email:req.body.email}, ' secret_pass ',{ expiresIn: '24h'}) })
 })
 
 const justify = (text, len) => {
@@ -36,5 +35,4 @@ String.prototype.insertAt = function (index,string) {
 
   return string + this;
 };
-
 module.exports = router;
