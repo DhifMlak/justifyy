@@ -13,7 +13,8 @@ router.post('/token', (req, res) => {
 
 const justify = (text, len) => {
     const re = RegExp("(?:\\s|^)(.{1," + len + "})(?=\\s|$)", "g");
-    lines = text.split(re);
+    console.log(text);
+   let lines = text.split(re);
 
 
     lines = lines.filter((line) => line !== "");
@@ -36,3 +37,4 @@ String.prototype.insertAt = function (index,string) {
   return string + this;
 };
 module.exports = router;
+module.exports.justify = justify;

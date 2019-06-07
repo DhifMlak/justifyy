@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "Dhif Abdelmlak",
   "license": "ISC",
@@ -16,5 +16,8 @@
     "passport": "^0.4.0",
     "passport-http-bearer": "^1.0.1",
     "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.1.4"
   }
 }
