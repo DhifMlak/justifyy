@@ -10,7 +10,7 @@ const tokenValidator = (req, res, next) => {
     }
 
 
-    jwt.verify(token, ' secret_pass ', (err, decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
       if (err) {
         return res.json({
           success: false,

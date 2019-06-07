@@ -8,7 +8,7 @@ router.post('/justify',tokenValidator,rateLimiter, (req, res) => {
 })
 
 router.post('/token', (req, res) => {
-    res.send({ token: jwt.sign({email:req.body.email}, ' secret_pass ',{ expiresIn: '24h'}) })
+    res.send({ token: jwt.sign({email:req.body.email}, process.env.JWT_SECRET,{ expiresIn: '24h'}) })
 })
 
 const justify = (text, len) => {
